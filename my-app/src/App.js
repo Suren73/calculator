@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./App.module.css";
 import useCalculator from "./hooks/useCalculator";
 import useOperators from "./hooks/useOperators";
-import { numbers, operators } from "./utils/utils";
+import { NUMS, operators } from "./utils/utils";
 
 const App = () => {
 	const { calculator } = useCalculator();
@@ -20,11 +20,6 @@ const App = () => {
 		setExpression("");
 		setIsResult(true);
 	};
-
-	// const defaultExpression = (expr) => {
-	// 	setExpression(expr.slice(0, -1));
-	// 	setIsResult(false);
-	// };
 
 	const getReturn = () => {
 		return;
@@ -95,12 +90,11 @@ const App = () => {
 			</div>
 			<div className={styles.buttons}>
 				<div className={styles.numbers}>
-					{numbers.map((num) => (
+					{NUMS.map((num) => (
 						<button
 							key={num}
 							onClick={() => handlerNumber(num)}
 							className={`${styles.button} ${num === 0 ? styles.zero : ""}`}
-							data-type="number"
 						>
 							{num}
 						</button>
