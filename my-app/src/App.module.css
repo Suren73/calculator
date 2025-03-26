@@ -2,8 +2,8 @@
 	max-width: 320px;
 	margin: 50px auto;
 	padding: 20px;
-	background: #f9f9f9;
 	border: 1px solid #ccc;
+	background-color: #f9f9f9;
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -11,12 +11,12 @@
 	-o-border-radius: 10px;
 }
 
-.display {
+.screen {
 	font-size: 2em;
 	text-align: right;
-	padding: 15px;
 	margin-bottom: 20px;
-	background: #fff;
+	padding: 15px;
+	background-color: #fff;
 	border: 1px solid #ddd;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -29,60 +29,61 @@
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 	gap: 10px;
+	text-align: center;
 }
 
-.numbers {
+.buttonsNumbers,
+.operators {
 	display: grid;
+	gap: 5px;
+}
+
+.buttonsNumbers {
 	grid-template-columns: repeat(3, 1fr);
-	gap: 5px;
-}
-.button {
-	font-size: 1.2em;
-	padding: 15px;
-	background: #fff;
-	border: 1px solid #ddd;
-	border-radius: 5px;
-	cursor: pointer;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-ms-border-radius: 5px;
-	-o-border-radius: 5px;
 }
 
-.button:hover {
-	background: #f0f0f0;
-}
-
-.zero {
-	grid-column: 1/4;
-}
-
-.operations {
-	display: grid;
-	gap: 5px;
-}
-
-.operation,
+.button,
 .reset,
+.operator,
 .equals {
 	font-size: 1.2em;
 	padding: 15px;
-	border: none;
+	cursor: pointer;
+	border: 0;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-ms-border-radius: 5px;
 	-o-border-radius: 5px;
-	cursor: pointer;
-	text-align: center;
-	color: #fff;
 }
 
-.operation {
+.button {
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.button:hover {
+	background-color: #f0f0f0;
+}
+
+.zero {
+	grid-column: 2/3;
+}
+
+.reset {
+	background: #f44336;
+	/* border: 1px solid #fff; */
+}
+
+.reset:hover {
+	background: #da190b;
+}
+
+.operator {
 	background: #ff9800;
 }
 
-.operation:hover {
+.operator:hover {
 	background: #f57c00;
 }
 
@@ -94,14 +95,6 @@
 	background: #45a049;
 }
 
-.reset {
-	background: #f44336;
-}
-
-.reset:hover {
-	background: #da190b;
-}
-
 .result {
-	color: #2196f3;
+	color: #f44336;
 }
