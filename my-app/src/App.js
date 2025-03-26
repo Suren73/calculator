@@ -48,6 +48,13 @@ export const App = () => {
 		}
 	};
 
+	const handleReset = () => {
+		setFirstOperand("0");
+		setOperator("");
+		setNextOperand("");
+		setIsResult(false);
+	};
+
 	const handleOperator = (op) => {
 		if (isResult) setIsResult(false);
 
@@ -70,14 +77,106 @@ export const App = () => {
 		setNextOperand("");
 	};
 
-	const handleReset = () => {
-		setFirstOperand("0");
-		setOperator("");
-		setNextOperand("");
-		setIsResult(false);
-	};
-
-	const NUMS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+	const buttons = [
+		{
+			id: "1",
+			value: "1",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "2",
+			value: "2",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "3",
+			value: "3",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "4",
+			value: "4",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "5",
+			value: "5",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "6",
+			value: "6",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "7",
+			value: "7",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "8",
+			value: "8",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "9",
+			value: "9",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "0",
+			value: "0",
+			type: "number",
+			className: styles.button,
+			handler: (num) => handleNumber(num),
+		},
+		{
+			id: "C",
+			value: "C",
+			type: "operator",
+			className: styles.reset,
+			handler: handleReset,
+		},
+		{
+			id: "+",
+			value: "+",
+			type: "operator",
+			className: styles.operator,
+			handler: (op) => handleOperator(op),
+		},
+		{
+			id: "-",
+			value: "-",
+			type: "operator",
+			className: styles.operator,
+			handler: (op) => handleOperator(op),
+		},
+		{
+			id: "=",
+			value: "=",
+			type: "operator",
+			className: styles.equals,
+			handler: handleEquals,
+		},
+	];
 
 	return (
 		<div className={styles.app}>
@@ -88,35 +187,30 @@ export const App = () => {
 			</div>
 			<div className={styles.buttons}>
 				<div className={styles.buttonsNumbers}>
-					{NUMS.map((num) => (
-						<button
-							key={num}
-							className={`${styles.button} ${num === "0" ? styles.zero : ""}`}
-							onClick={() => handleNumber(num)}
-						>
-							{num}
-						</button>
-					))}
+					{buttons.map(({ id, value, type, className, handler }) =>
+						type === "number" ? (
+							<button
+								key={id}
+								className={`${className} ${value === "0" ? styles.zero : ""}`}
+								onClick={() => handler(value)}
+							>
+								{value}
+							</button>
+						) : null,
+					)}
 				</div>
 				<div className={styles.operators}>
-					<button className={styles.reset} onClick={handleReset}>
-						C
-					</button>
-					<button
-						className={styles.operator}
-						onClick={() => handleOperator("+")}
-					>
-						+
-					</button>
-					<button
-						className={styles.operator}
-						onClick={() => handleOperator("-")}
-					>
-						-
-					</button>
-					<button className={styles.equals} onClick={handleEquals}>
-						=
-					</button>
+					{buttons.map(({ id, value, type, className, handler }) =>
+						type === "operator" ? (
+							<button
+								key={id}
+								className={className}
+								onClick={() => handler(value)}
+							>
+								{value}
+							</button>
+						) : null,
+					)}
 				</div>
 			</div>
 		</div>
